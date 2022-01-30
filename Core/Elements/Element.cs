@@ -1,4 +1,6 @@
-﻿using OpenQA.Selenium;
+﻿using BoDi;
+using DotNetFramework.Utils;
+using OpenQA.Selenium;
 
 namespace DotNetFramework.Core.Elements
 {
@@ -6,6 +8,7 @@ namespace DotNetFramework.Core.Elements
     {
         protected IWebDriver driver;
         protected By by;
+        protected abstract string elementType { get; }
 
         public Element(IWebDriver driver, By by)
         {
@@ -13,6 +16,17 @@ namespace DotNetFramework.Core.Elements
             this.by = by;
         }
 
+        public void Click()
+        {
+            driver.FindElement(by).Click();
+            LogAction("Click on element");
+        }
+
         public string Text => driver.FindElement(by).Text;
+
+        public void LogAction(string action)
+        {
+            Logger.Instance.Log($"{elementType}: {action}");
+        }
     }
 }

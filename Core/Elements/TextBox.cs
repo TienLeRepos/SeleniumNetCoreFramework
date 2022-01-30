@@ -6,6 +6,12 @@ namespace DotNetFramework.Core.Elements
     {
         public TextBox(IWebDriver driver, By by) : base(driver, by) { }
 
-        public void EnterText(string text) => driver.FindElement(by).SendKeys(text);
+        protected override string elementType => "TextBox";
+
+        public void EnterText(string text) 
+        { 
+            driver.FindElement(by).SendKeys(text);
+            LogAction($"Enter text: '{text}' ");
+        }
     }
 }
