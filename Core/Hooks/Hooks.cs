@@ -3,6 +3,7 @@ using DotNetFramework.Core;
 using DotNetFramework.Utils;
 using OpenQA.Selenium;
 using TechTalk.SpecFlow;
+using Logger = DotNetFramework.Utils.Logger;
 
 namespace DotNetFramework.Hooks
 {
@@ -16,12 +17,13 @@ namespace DotNetFramework.Hooks
         {
             this.objectContainer = objectContainer;
             this.scenarioContext = scenarioContext;
+            
         }
 
         [AfterStep]
         public void AfterStep()
         {
-            var a = scenarioContext;
+            Logger.Instance.Log(scenarioContext.StepContext.StepInfo.StepDefinitionType.ToString() + " " + scenarioContext.StepContext.StepInfo.Text);
         }
 
         [BeforeScenario]
@@ -37,6 +39,7 @@ namespace DotNetFramework.Hooks
         {
             objectContainer.Resolve<IWebDriver>().Close();
             objectContainer.Resolve<IWebDriver>().Dispose();
+            Logger.Instance.Close();
         }
     }
 }

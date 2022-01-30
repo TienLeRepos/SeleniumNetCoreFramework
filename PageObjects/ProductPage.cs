@@ -7,10 +7,7 @@ namespace DotNetFramework.PageObjects
 {
     class ProductPage : Page
     {
-        public ProductPage(IWebDriver driver) : base(driver)
-        {
-
-        }
+        public ProductPage(IWebDriver driver) : base(driver) { }
 
         private Button addToCartBtn => new Button(_driver, By.Id("add_to_cart"));
 
