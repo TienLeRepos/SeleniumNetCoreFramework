@@ -18,15 +18,19 @@ namespace DotNetFramework.Core.Elements
 
         public void Click()
         {
+            LogAction("Clicking on element");
             driver.FindElement(by).Click();
-            LogAction("Click on element");
         }
 
-        public string Text => driver.FindElement(by).Text;
-
-        public void LogAction(string action)
+        public string GetText()
         {
-            Logger.Instance.Log($"{elementType}: {action}");
+            LogAction($"Getting text from element");
+            return driver.FindElement(by).Text;
+        }
+
+        protected void LogAction(string action)
+        {
+            Logger.Instance.Log($"[{elementType}]: {action}; Locator: {by}");
         }
     }
 }

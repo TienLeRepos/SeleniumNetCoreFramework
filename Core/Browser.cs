@@ -16,11 +16,18 @@ namespace DotNetFramework.Core
                     driver = new FirefoxDriver();
                     break;
                 case "chrome":
-                    driver = new ChromeDriver();
+                    var chromeOptions = new ChromeOptions();
+                    if (IsBrowserHeadless)
+                    {
+                        chromeOptions.AddArgument("headless");
+                    }
+                    driver = new ChromeDriver(chromeOptions);
                     break;
             }
 
             return driver;
         }
+
+        public static bool IsBrowserHeadless => Configuration.IsBrowserHeadless;
     }
 }

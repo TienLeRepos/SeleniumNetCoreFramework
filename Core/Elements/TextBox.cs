@@ -11,7 +11,7 @@ namespace DotNetFramework.Core.Elements
         public void EnterText(string text) 
         { 
             driver.FindElement(by).SendKeys(text);
-            LogAction($"Enter text: '{text}' ");
+            LogAction($"Entering text: '{text}'");
         }
     }
 }
