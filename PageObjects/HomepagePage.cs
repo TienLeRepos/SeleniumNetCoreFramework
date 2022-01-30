@@ -1,4 +1,5 @@
 ﻿using DotNetFramework.Core;
+using DotNetFramework.Core.Elements;
 using OpenQA.Selenium;
 
 namespace DotNetFramework.PageObjects
@@ -10,9 +11,9 @@ namespace DotNetFramework.PageObjects
         {
         }
 
-        private IWebElement firstAvailableProduct => _driver.FindElement(By.XPath("(//div[@class='product-container'])[1]"));
+        private Button Option(string optionName) => new Button(_driver, By.XPath($"//div[@class='card-body'][./h5[text()='{optionName}']]"));
 
-        public void ClickFirstAvailableProduct() => firstAvailableProduct.Click();
+        public void ClickOption(string optionName) => Option(optionName).Click();
 
         public void NavigateToHomepage() => _driver.Navigate().GoToUrl(Configuration.BaseUrl);
     }

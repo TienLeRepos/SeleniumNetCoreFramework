@@ -6,14 +6,13 @@ namespace DotNetFramework.Utils
     {
         private string logFilePath = @".\test.txt";
         private StreamWriter streamWriter;
-        private static Logger logger = new Logger();
 
         public Logger()
         {
             streamWriter = new StreamWriter(logFilePath);
         }
 
-        public static Logger Instance => logger;
+        public static Logger Instance { get; } = new Logger();
 
         public void Log(string text) => streamWriter.WriteLine(text);
 

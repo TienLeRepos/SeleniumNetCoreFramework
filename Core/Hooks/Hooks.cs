@@ -2,6 +2,7 @@
 using DotNetFramework.Core;
 using DotNetFramework.Utils;
 using OpenQA.Selenium;
+using System.Drawing;
 using TechTalk.SpecFlow;
 using Logger = DotNetFramework.Utils.Logger;
 
@@ -30,7 +31,11 @@ namespace DotNetFramework.Hooks
         public void InitializeWebDriver()
         {
             var webDriver = Browser.InitBrowser(Configuration.BrowserName);
-            webDriver.Manage().Window.Maximize();
+            if (Configuration.IsBrowserHeadless)
+                webDriver.Manage().Window.Size = new Size(1920, 1080);
+            else
+                webDriver.Manage().Window.Maximize();
+            
             objectContainer.RegisterInstanceAs(webDriver);
         }
 
@@ -39,6 +44,11 @@ namespace DotNetFramework.Hooks
         {
             objectContainer.Resolve<IWebDriver>().Close();
             objectContainer.Resolve<IWebDriver>().Dispose();
+        }
+
+        [AfterFeature]
+        public static void CloseLogger()
+        {
             Logger.Instance.Close();
         }
     }

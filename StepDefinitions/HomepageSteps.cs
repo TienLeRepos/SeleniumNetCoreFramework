@@ -23,10 +23,10 @@ namespace DotNetFramework.StepDefinitions
             _homepagePage.NavigateToHomepage();
         }
 
-        [When(@"I click the first available product")]
-        public void GivenIClickTheFirstAvailableProduct()
+        [When(@"I click option '(.*)'")]
+        public void WhenIClickOption(string optionName)
         {
-            _homepagePage.ClickFirstAvailableProduct();
+            _homepagePage.ClickOption(optionName);
         }
     }
 }
