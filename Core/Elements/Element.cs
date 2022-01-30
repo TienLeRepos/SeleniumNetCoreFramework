@@ -9,6 +9,7 @@ namespace DotNetFramework.Core.Elements
         protected IWebDriver driver;
         protected By by;
         protected abstract string elementType { get; }
+        public By Locator => by;
 
         public Element(IWebDriver driver, By by)
         {
@@ -22,10 +23,20 @@ namespace DotNetFramework.Core.Elements
             driver.FindElement(by).Click();
         }
 
-        public string GetText()
+        public void ClickViaJs()
         {
-            LogAction($"Getting text from element");
-            return driver.FindElement(by).Text;
+            LogAction("Clicking on element via JS");
+            IJavaScriptExecutor executor = (IJavaScriptExecutor)driver;
+            executor.ExecuteScript("arguments[0].click();", driver.FindElement(by));
+        }
+
+        public string Text
+        {
+            get 
+            {
+                LogAction($"Getting text from element");
+                return driver.FindElement(by).Text;
+            }
         }
 
         protected void LogAction(string action)
