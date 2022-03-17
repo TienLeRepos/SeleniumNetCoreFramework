@@ -14,18 +14,18 @@ namespace DotNetFramework.PageObjects.FormsPageObjects
             
         }
 
-        private TextBox FirstName => new TextBox(_driver, By.Id("firstName"));
-        private TextBox LastName => new TextBox(_driver, By.Id("lastName"));
-        private TextBox Email => new TextBox(_driver, By.Id("userEmail"));
-        private RadioButton Gender(string gender) => new RadioButton(_driver, By.CssSelector($"input[value='{gender}']"));
-        private TextBox Mobile => new TextBox(_driver, By.Id("userNumber"));
-        private TextBox Birthdate => new TextBox(_driver, By.Id("dateOfBirthInput"));
-        private TextBox Subject => new TextBox(_driver, By.Id("subjectsInput"));
-        private RadioButton Hobby(int index) => new RadioButton(_driver, By.CssSelector($"[id='hobbies-checkbox-{index}']"));
-        private TextBox Address => new TextBox(_driver, By.Id("currentAddress"));
-        private TextBox State => new TextBox(_driver, By.CssSelector("[id='state'] input"));
-        private TextBox City => new TextBox(_driver, By.CssSelector("[id='city'] input"));
-        private Button Submit => new Button(_driver, By.Id("submit"));
+        private TextBox FirstName => new TextBox(_driver, By.Id("firstName"), "Textbox First Name");
+        private TextBox LastName => new TextBox(_driver, By.Id("lastName"), "Textbox Last Name");
+        private TextBox Email => new TextBox(_driver, By.Id("userEmail"), "Textbox Email");
+        private RadioButton Gender(string gender) => new RadioButton(_driver, By.CssSelector($"input[value='{gender}']"), $"Radio button gender: {gender}");
+        private TextBox Mobile => new TextBox(_driver, By.Id("userNumber"), "Textbox Mobile");
+        private TextBox Birthdate => new TextBox(_driver, By.Id("dateOfBirthInput"), "Textbox Birthdate");
+        private TextBox Subject => new TextBox(_driver, By.Id("subjectsInput"), "Textbox Subject");
+        private RadioButton Hobby(int index) => new RadioButton(_driver, By.CssSelector($"[id='hobbies-checkbox-{index}']"), $"Radio button hobby: {index}");
+        private TextBox Address => new TextBox(_driver, By.Id("currentAddress"), "Textbox Current Address");
+        private TextBox State => new TextBox(_driver, By.CssSelector("[id='state'] input"), "Textbox State");
+        private TextBox City => new TextBox(_driver, By.CssSelector("[id='city'] input"), "Textbox City");
+        private Button Submit => new Button(_driver, By.Id("submit"), "Button Submit");
 
         public void EnterFirstName(string firstName) => FirstName.EnterText(firstName);
         public void EnterLastName(string lastName) => LastName.EnterText(lastName);

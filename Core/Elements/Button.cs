@@ -7,7 +7,7 @@ namespace DotNetFramework.Core.Elements
 
         protected override string elementType => "Button";
 
-        public Button(IWebDriver driver, By by) : base(driver, by) 
+        public Button(IWebDriver driver, By by, string description) : base(driver, by, description) 
         {
 
         }

@@ -7,7 +7,7 @@ namespace DotNetFramework.Core.Elements
 
         protected override string elementType => "Label";
 
-        public Label(IWebDriver driver, By by) : base(driver, by) 
+        public Label(IWebDriver driver, By by, string description) : base(driver, by, description) 
         {
 
         }

@@ -11,7 +11,7 @@ namespace DotNetFramework.PageObjects
         {
         }
 
-        private Button Option(string optionName) => new Button(_driver, By.XPath($"//div[@class='card-body'][./h5[text()='{optionName}']]"));
+        private Button Option(string optionName) => new Button(_driver, By.XPath($"//div[@class='card-body'][./h5[text()='{optionName}']]"), $"Button {optionName}");
 
         public void ClickOption(string optionName) => Option(optionName).Click();
 

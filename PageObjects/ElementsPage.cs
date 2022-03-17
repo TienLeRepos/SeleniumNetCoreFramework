@@ -10,7 +10,7 @@ namespace DotNetFramework.PageObjects
 
         }
 
-        private Label HeaderLabel => new Label(_driver, By.CssSelector("div[class='main-header']"));
+        private Label HeaderLabel => new Label(_driver, By.CssSelector("div[class='main-header']"), "Header label");
 
         public string HeaderText => HeaderLabel.Text;
     }

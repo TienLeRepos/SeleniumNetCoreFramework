@@ -7,7 +7,7 @@ namespace DotNetFramework.Core.Elements
 
         protected override string elementType => "Radio Button";
 
-        public RadioButton(IWebDriver driver, By by) : base(driver, by)
+        public RadioButton(IWebDriver driver, By by, string description) : base(driver, by, description)
         {
 
         }
@@ -16,7 +16,7 @@ namespace DotNetFramework.Core.Elements
         {
             get 
             {
-                LogAction("Checking if radio button is selected");
+                LogAction($"Checking if radio button '{Description}' is selected");
                 return driver.FindElement(by).Selected; 
             }
         }

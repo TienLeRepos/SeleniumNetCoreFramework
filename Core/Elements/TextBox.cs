@@ -4,7 +4,7 @@ namespace DotNetFramework.Core.Elements
 {
     class TextBox : Element
     {
-        public TextBox(IWebDriver driver, By by) : base(driver, by) { }
+        public TextBox(IWebDriver driver, By by, string description) : base(driver, by, description) { }
 
         protected override string elementType => "TextBox";
 

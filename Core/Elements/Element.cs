@@ -8,13 +8,16 @@ namespace DotNetFramework.Core.Elements
     {
         protected IWebDriver driver;
         protected By by;
+
         protected abstract string elementType { get; }
         public By Locator => by;
+        public string Description;
 
-        public Element(IWebDriver driver, By by)
+        public Element(IWebDriver driver, By by, string description)
         {
             this.driver = driver;
             this.by = by;
+            Description = description;
         }
 
         public void Click()
