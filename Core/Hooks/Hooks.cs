@@ -3,6 +3,7 @@ using DotNetFramework.Core;
 using DotNetFramework.Utils;
 using OpenQA.Selenium;
 using System.Drawing;
+using System.Linq;
 using TechTalk.SpecFlow;
 using Logger = DotNetFramework.Utils.Logger;
 
@@ -18,7 +19,6 @@ namespace DotNetFramework.Hooks
         {
             this.objectContainer = objectContainer;
             this.scenarioContext = scenarioContext;
-            
         }
 
         [AfterStep]
@@ -30,20 +30,26 @@ namespace DotNetFramework.Hooks
         [BeforeScenario]
         public void InitializeWebDriver()
         {
-            var webDriver = Browser.InitBrowser(Configuration.BrowserName);
-            if (Configuration.IsBrowserHeadless)
-                webDriver.Manage().Window.Size = new Size(1920, 1080);
-            else
-                webDriver.Manage().Window.Maximize();
-            
-            objectContainer.RegisterInstanceAs(webDriver);
+            if (!scenarioContext.ScenarioInfo.Tags.Contains("API"))
+            {
+                var webDriver = Browser.InitBrowser(Configuration.BrowserName);
+                if (Configuration.IsBrowserHeadless)
+                    webDriver.Manage().Window.Size = new Size(1920, 1080);
+                else
+                    webDriver.Manage().Window.Maximize();
+
+                objectContainer.RegisterInstanceAs(webDriver);
+            }
         }
 
         [AfterScenario]
         public void CloseBrowser()
         {
-            objectContainer.Resolve<IWebDriver>().Close();
-            objectContainer.Resolve<IWebDriver>().Dispose();
+            if (objectContainer.IsRegistered<IWebDriver>())
+            {
+                objectContainer.Resolve<IWebDriver>().Close();
+                objectContainer.Resolve<IWebDriver>().Dispose();
+            }
         }
 
         [AfterFeature]

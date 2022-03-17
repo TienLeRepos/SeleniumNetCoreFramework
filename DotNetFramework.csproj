@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
@@ -9,6 +9,8 @@
   <ItemGroup>
     <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
     <PackageReference Include="ExtentReports" Version="4.1.0" />
+    <PackageReference Include="Flurl" Version="3.0.4" />
+    <PackageReference Include="Flurl.Http" Version="3.2.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
@@ -17,10 +19,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="NLog" Version="4.7.14" />
-    <PackageReference Include="Selenium.Firefox.WebDriver" Version="0.27.0" />
     <PackageReference Include="Selenium.Support" Version="4.1.0" />
     <PackageReference Include="Selenium.WebDriver" Version="4.1.0" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="99.0.4844.5100" />
+    <PackageReference Include="Selenium.WebDriver.GeckoDriver" Version="0.30.0.1" />
     <PackageReference Include="SpecFlow.xUnit" Version="3.9.58" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.analyzers" Version="0.10.0" />

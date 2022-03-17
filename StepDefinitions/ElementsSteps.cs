@@ -9,12 +9,12 @@ namespace DotNetFramework.StepDefinitions
     [Binding]
 
 
-    class ElementsSteps
+    class TestApiSteps
     {
         private readonly ScenarioContext _scenarioContext;
         private readonly ElementsPage _elementsPage;
 
-        public ElementsSteps(IObjectContainer objectContainer, ScenarioContext scenarioContext)
+        public TestApiSteps(IObjectContainer objectContainer, ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
             _elementsPage = new ElementsPage(objectContainer.Resolve<IWebDriver>());
